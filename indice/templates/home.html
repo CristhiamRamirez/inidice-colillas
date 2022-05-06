@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+<br>
+    <div class="container">
+        <div class="row">
+            <div class="col-13 col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <br>
+                            <h2>Opciones disponibles</h2>
+                            <ul>
+                                <li><a href="/admin">Administracion</a></li>
+                                <li><a href="/subir-datos">Subir datos de cheques</a></li>
+                                <li><a href="/diario-facturas">Crear diario facturas(cheques) -> Diario facturas</a></li>
+                                <li><a href="/pagos-proveedores">Registrar cheques -> Pagos proveedores</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% endblock %}

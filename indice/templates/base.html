@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Importar cheques</title>
+        <meta name="description" content="Automatizacion Dynamics">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load bootstrap4 %}
+        {% load static %}
+        {% bootstrap_css %}
+        
+    </head>
+    <body>
+        <div>
+            <br>
+            <h1>Automatizaciones MS Dynamics</h1>
+            <header>
+                <nav class="navbar navbar-fixed-top border" role="navigation">
+                    <div class="container-fluid">
+                        
+                        <div id="navbar-1">
+                            <ul>
+                                <a href="/">home</a>
+                                {% if user.is_authenticated %}
+                                    <br>
+                                    <a href="#">usuario: {{ user.username }} </a>
+                                    <br>
+                                    <a href="{% url 'logout' %}">cerrar sesión</a>
+                                {% else %}
+                                    <a href="{% url 'login' %}">iniciar sesión</a>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div> 
+       
+        {% block contenido %}
+        {% endblock %}
+        <!--javascript sweetalert2-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        {% if messages %}
+            {% for m in messages %}
+                {% if m.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>
+                        Swal.fire({
+                            "title": "Automatización",
+                            "text": "{{m}}",
+                            "icon": "error"
+                        })
+                    </script>
+                {% elif m.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>
+                        Swal.fire({
+                            "title": "Automatización",
+                            "text": "{{m}}",
+                            "icon": "success"
+                        })
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <!--javascript sweetalert2-->        
+        {% bootstrap_javascript jquery='full' %}
+    </body>
+</html>
